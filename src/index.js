@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+// import HookApp from './HookApp';
+// import CounterApp from './components/useState/CounterApp';
+import CounterWithCustomHook from './components/useState/CounterWithCustomHook';
+
 
 ReactDOM.render(
-  <App />,
+  <CounterWithCustomHook />,
   document.getElementById('root')
 );
