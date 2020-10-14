@@ -5,10 +5,10 @@ import './index.css';
 // import CounterApp from './components/useState/CounterApp';
 // import CounterWithCustomHook from './components/useState/CounterWithCustomHook';
 // import SimpleForm from './components/useEffect/SimpleForm'
-import FormWithCustomHook from './components/useEffect/FormWithCustomHook'
-
+// import FormWithCustomHook from './components/useEffect/FormWithCustomHook'
+import MultipleCustomHooks from './components/examples/MultipleCustomHooks';
 
 ReactDOM.render(
-  <FormWithCustomHook />,
+  <MultipleCustomHooks />,
   document.getElementById('root')
 );
