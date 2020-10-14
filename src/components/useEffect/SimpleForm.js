@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './effects.css';
+import Message from './Message';
 
 const SimpleForm = () => {
 
+  // Un hook no puede estar dentro de una condición, if statemement
   const [form, setForm] = useState({
     name: '',
     email: ''
@@ -13,12 +15,17 @@ const SimpleForm = () => {
   // Mandar como segundo argumento [] hace que se ejecute una sola vez
   useEffect(() => {
     console.log('hey');
+    // el return en el useEffect hace una limpieza cuando el componenete se deemopnta (unmount)
   },[]);
 
   // Aqui sólo se disparará lo establecido dentro de la funcion use efect cuando lo que se establezca como segundo argumento sucedaa
   useEffect(() => {
     console.log('hey, form cambió');
   },[form]);
+  
+  useEffect(() => {
+    console.log('hey, form cambió');
+  },[email]);
 
   // The target event property returns the element that triggered the event, gets the element on which the event originally occurred
   const handleInputChange = ({ target }) => {
@@ -58,6 +65,7 @@ const SimpleForm = () => {
             onChange={ handleInputChange }
           />
         </div>
+        { (name === '123') && <Message />}
       </>
     )
 }
