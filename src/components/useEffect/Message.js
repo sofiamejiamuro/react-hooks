@@ -14,7 +14,7 @@ const Message = () => {
         y : e.y
       }
       setCoords( coords )
-      console.log(coords);
+      // console.log(coords);
     };
 
     window.addEventListener('mousemove',mouseMove);
@@ -27,7 +27,7 @@ const Message = () => {
       console.log(coords); 
     })*/
     return () => {
-        // el return en el useEffect hace una limpieza cuando el componenete se deemopnta (unmount)
+        // el return en el useEffect hace una limpieza cuando el componenete se desmonta (unmount)
         window.removeEventListener('mousemove', mouseMove)
     }
   }, [])
