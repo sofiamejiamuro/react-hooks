@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 const useFetch = (url) => {
   
-  const [state, setstate] = useState({
+  const [state, setState] = useState({
     data:null,
     loading:true,
     error:null
@@ -10,10 +10,16 @@ const useFetch = (url) => {
 
   useEffect(() => {
     
+    setState({
+      data:null,
+      loading:true,
+      error:null
+    });
+    
     fetch(url)
       .then( resp => resp.json() )
       .then( data => {
-        setstate({
+        setState({
           data: data,
           loading: false,
           error: null
