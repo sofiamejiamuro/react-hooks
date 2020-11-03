@@ -8,9 +8,14 @@ import './index.css';
 // import FormWithCustomHook from './components/useEffect/FormWithCustomHook'
 // import MultipleCustomHooks from './components/examples/MultipleCustomHooks';
 // import FocusScreen from './components/useRef/FocusScreen';
-import RealExampleUseRef from './components/useRef/RealExampleUseRef';
+// import RealExampleUseRef from './components/useRef/RealExampleUseRef';
+// import Layout from './components/useLayoutEffect/Layout';
+// import Memorize from './components/useMemo/Memorize'
+// import MemoHook from './components/useMemo/MemoHook';
+
+import CallbackHook from './components/useMemo/CallbackHook';
 
 ReactDOM.render(
-  <RealExampleUseRef />,
+  <CallbackHook />,
   document.getElementById('root')
 );

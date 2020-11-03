@@ -52,7 +52,7 @@ const useFetch = (url) => {
             console.log('setState no se llamó');
           }
           
-        }, 4000);
+        }, 100);
        
       });
     
