@@ -1,6 +1,6 @@
 import React from 'react';
 import '../useEffect/effects.css';
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import ShowIncrement from './ShowIncrement';
 
 // useCallback tiene dos casos de uso:
@@ -10,9 +10,14 @@ const CallbackHook = () => {
 
   const [counter, setCounter] = useState(10);
 
-  const increment = () =>{
+
+  /* const increment = () =>{
     setCounter( counter + 1);
-  }
+  } */
+
+  const increment = useCallback(() =>{
+    setCounter( c => c + 1);
+  }, [setCounter ])
 
   return (
     <div>
