@@ -12,10 +12,10 @@ import './index.css';
 // import Layout from './components/useLayoutEffect/Layout';
 // import Memorize from './components/useMemo/Memorize'
 // import MemoHook from './components/useMemo/MemoHook';
-
-import CallbackHook from './components/useMemo/CallbackHook';
+// import CallbackHook from './components/useMemo/CallbackHook';
+import { Padre } from './components/useMemoHW/Padre';
 
 ReactDOM.render(
-  <CallbackHook />,
+  <Padre />,
   document.getElementById('root')
 );

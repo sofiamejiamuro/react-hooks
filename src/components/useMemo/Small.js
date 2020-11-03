@@ -1,5 +1,7 @@
 // Con la propiedad memo podemos memorizar el componente y que solo se rederice si hay un campio en las properties del mismo
 // Hay dos formas de hacerlo
+
+
 // import React, { memo } from 'react';
 
 /* 

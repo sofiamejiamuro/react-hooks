@@ -4,11 +4,16 @@ import useCounter from '../../hook/useCounter';
 import { useState, useMemo } from "react";
 import procesoPesado from '../../helpers/procesoPesado';
 
+
+
 const MemoHook = () => {
 
   const { counter, increment } = useCounter(5);
   const [show, setShow] = useState(true);
+  // Memorizar el valor si sigue siendo el mismo , sino reprocesarlo
+  // usMemo(primer agurmeento una función callback, segundo argumnto la dependecia)
 
+  // Si el counter cambia necesito una nueva versión del la función
   const memoProcesoPesado = useMemo(() => procesoPesado(counter), [ counter ]);
 
   return (
