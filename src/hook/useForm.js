@@ -1,19 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
+// useForm recibe un objeto de parámetro
 const useForm = (initialState = {}) => {
 
   const [values, setValues] = useState(initialState);
   
-  // console.log(values)
-
+  const reset = () => {
+    setValues(initialState)
+  }
   const handleInputChange = ({ target }) => {
+    // el target es el input
+    // console.log(target);
     setValues({
       ...values,
       [ target.name ]: target.value
     });
+    // console.log(values);
   }
 
-  return [ values, handleInputChange];
+  // Retorna un arreglo con los valores y la función
+  return [ values, handleInputChange, reset];
 }
 
 export default useForm;
