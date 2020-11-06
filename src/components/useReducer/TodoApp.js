@@ -1,53 +1,57 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect, useCallback } from 'react';
 import todoReducer from './todoReducer';
-import useForm from '../../hook/useForm';
+
+import TodoList from './TodoList';
+import TodoAdd from './TodoAdd'
+
 
 import './styles.css';
 
-const initialState = [{
-  id: new Date().getTime(),
-  desc: 'Aprender React',
-  done: false
-}]
+
+const init = () =>{
+  /* return [{
+    id: new Date().getTime(),
+    desc: 'Aprender React',
+    done: false
+  }] */
+  return JSON.parse(localStorage.getItem('todos')) || [];
+}
 
 const TodoApp = () => {
 
   // todos es un arreglo del return de useReducer
   // dispatch es una función
-  const [ todos, dispatch ] = useReducer(todoReducer, initialState);
+  // init computa el estado inicial
+  // const [ todos, dispatch ] = useReducer(todoReducer,initialState);
 
-  // formValues es un objeto
-  /* const [ formValues, handleInputChange ] = useForm({
-    description:'hola'
-  }) */
+  const [ todos, dispatch ] = useReducer(todoReducer, [] , init);
 
-  // al desestructurar ele objeto fromValues y obtener solo el value
-  const [ { description }, handleInputChange, reset ] = useForm({
-    description:''
-  })
-
-  // 1. se ejecuta el useForm, mando el objeto que es el initialState {description:'new todo'}
-  // 2. se crea el useState
-  // 3. se crea la función handleInputChange
-  // 4. se retornan los valores y la función 
-
-  console.log(description)
   
-  const handleSubmit = (e) =>{
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }, [todos]);
 
-    // preventDefault evita el refresh
-    e.preventDefault();
-  
-    if (description.trim().length <= 1){
-      return;
-    }
+  const handleDelete = ( todoId ) => {
     
-    // el contenido del input debe pasar por el reducer para que se pueda agregar a la lista
-    const newTodo = {
-      id: new Date().getTime(),
-      desc: description,
-      done: false
-    };
+    // console.log(todoId);
+
+    const deleteTodo = {
+      type: 'delete',
+      payload: todoId
+    }
+
+    dispatch( deleteTodo );
+  };
+  
+
+  const handleDone = ( todoId) => {
+    dispatch({
+      type: 'done',
+      payload: todoId
+    })
+  };
+
+  const handleAddTodo = ( newTodo ) => {
 
     // Accion que se debe mandar al reducer
     const addTodo = {
@@ -57,9 +61,9 @@ const TodoApp = () => {
 
     // Se manda la accion al reducer mediante el dispatch
     dispatch( addTodo );
-    reset();
- 
+    
   };
+
 
   return (
     <div>
@@ -67,45 +71,16 @@ const TodoApp = () => {
       <hr />
       <div className="row">
         <div className="col-7">
-          <ul className="list-group list-group-flush">
-            {
-              todos.map((todo, i) => (
-                <li
-                  key={ todo.id }
-                  className="list-group-item"  
-                >
-                  <p className="text-center">{ i + 1}. { todo.desc }</p>
-                  <button className="btn btn-danger">
-                    Borrar
-                  </button>
-                </li>
-              ))
-            }
-          </ul>
+          <TodoList 
+            todos={ todos }
+            handleDelete={ handleDelete }
+            handleDone={ handleDone }
+          />
         </div>
         <div className="col-5">
-            <h4>Agregar TODO</h4>
-            <hr />
-            <form
-              onSubmit={ handleSubmit }
-            >
-              <input
-                type="text"
-                name="description"
-                className="form-control"
-                placeholder="Hacer..."
-                autocompltee="off"
-                value={ description }
-                onChange={ handleInputChange }
-              />
-              <button
-                type="submit"
-                className="btn btn-warning btn-block mt-1"
-              >
-                Agregar
-              </button>
-            </form> 
-
+        <TodoAdd 
+          handleAddTodo={ handleAddTodo }
+        />
         </div>
       </div>
       
