@@ -21,9 +21,10 @@ const TodoApp = () => {
 
   // todos es un arreglo del return de useReducer
   // dispatch es una función
-  // init computa el estado inicial
+  // init inicializa el estado inicial, funcion external al componente
   // const [ todos, dispatch ] = useReducer(todoReducer,initialState);
 
+  //useReducer !== funcion reducer
   const [ todos, dispatch ] = useReducer(todoReducer, [] , init);
 
   
@@ -88,4 +89,4 @@ const TodoApp = () => {
   )
 }
 
-export default TodoApp
+export default TodoApp;

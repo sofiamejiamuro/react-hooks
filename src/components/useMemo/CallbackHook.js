@@ -14,7 +14,7 @@ const CallbackHook = () => {
 
   // Normalmente sería así, cada que s ejecuta el componentee see vuelve a ejecutar, es deicr,
   // Si hay un cambio de estado se re-renderiza el componente por lo tanto la función
- /*  const increment = () =>{
+  /*  const increment = () =>{
     setCounter( counter + 1);
   }  */
 
