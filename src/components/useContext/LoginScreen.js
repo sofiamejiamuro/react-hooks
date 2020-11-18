@@ -9,6 +9,7 @@ const LoginScreen = () => {
     id:12343,
     name:'Sof'
   }
+  
   console.log(user, setUser);
 
   return (
